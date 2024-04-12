@@ -4,7 +4,7 @@ ANGM 2305 Final Project
 # Title
 
 ## Repository
-<(https://github.com/XuEric1018/xuEric_FinalProject.git)>
+[<(https://github.com/XuEric1018/xuEric_FinalProject.git)>](https://github.com/XuEric1018/xuEric_FinalProject.git)
 
 ## Description
 Turn an image into a mosaic like painting by blurring a small portion of the image.
