@@ -7,6 +7,7 @@ class TurnMosaic:
         self.image_name = image_name
         self.mosaic_size = mosaic_size
     
+
     def load_image(self):
         try:
             self.image = Image.open(self.image_name)
@@ -15,6 +16,7 @@ class TurnMosaic:
             print(f"Error: Image '{self.image_name}' not found.")
             return False
         
+
     def create_mosaic(self):
         #Solves: AttributeError: 'TurnMosaic' object has no attribute 'image'
         if not hasattr(self, 'image'):
@@ -26,12 +28,23 @@ class TurnMosaic:
             for x in range(0, width, self.mosaic_size):
                 #Create the region to blur
                 box = (x, y, x + self.mosaic_size, y + self.mosaic_size)
-
                 box_region = self.image.crop(box)
 
-                blurred_region = box_region.filter(ImageFilter.GaussianBlur(radius=15))
+                #(Blurred Version)
+                #blurred_region = box_region.filter(ImageFilter.GaussianBlur(radius=15))
+                #self.image.paste(blurred_region, box)
 
-                self.image.paste(blurred_region, box)
+                #(Single Color Version)
+                average_color = self.calculate_average_color(box_region)
+                solid_color_image = Image.new('RGB',(self.mosaic_size, self.mosaic_size), average_color)
+                self.image.paste(solid_color_image, box)
+
+
+    def calculate_average_color(self, image):
+        # Calculate the average color of the image
+        total_average_color = tuple(int(sum(colors) / len(colors)) for colors in zip(*image.getdata()))
+        return total_average_color
+            
     
     def save_mosaic(self, output_name):
         if hasattr(self, 'image'):
