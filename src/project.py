@@ -29,7 +29,7 @@ class TurnMosaic:
 
                 box_region = self.image.crop(box)
 
-                blurred_region = box_region.filter(ImageFilter.BLUR)
+                blurred_region = box_region.filter(ImageFilter.GaussianBlur(radius=15))
 
                 self.image.paste(blurred_region, box)
     
