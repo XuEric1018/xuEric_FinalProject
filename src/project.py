@@ -24,6 +24,8 @@ class TurnMosaic:
                 return
 
         width, heigth = self.image.size
+
+        #scan the image
         for y in range(0, heigth, self.mosaic_size):
             for x in range(0, width, self.mosaic_size):
                 #Create the region to blur
@@ -35,6 +37,7 @@ class TurnMosaic:
                 #self.image.paste(blurred_region, box)
 
                 #(Single Color Version)
+
                 average_color = self.calculate_average_color(box_region)
                 solid_color_image = Image.new('RGB',(self.mosaic_size, self.mosaic_size), average_color)
                 self.image.paste(solid_color_image, box)
@@ -55,7 +58,9 @@ class TurnMosaic:
 
 def main():
     image_name = "LakeView.png"
-    mosaic_size = 50  
+
+    #sets the mosaic size  to blurr
+    mosaic_size = 50
 
     mosaic = TurnMosaic(image_name, mosaic_size)
     mosaic.create_mosaic()
