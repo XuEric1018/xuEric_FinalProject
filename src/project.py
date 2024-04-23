@@ -36,6 +36,11 @@ def main():
     image_name = "LakeView.png"
     mosaic_size = 50  
 
+    mosaic = TurnMosaic(image_name, mosaic_size)
+    mosaic.create_mosaic()
+
+    mosaic.save_mosaic("Mosaiced_LakeView.png")
+
     
 
 if __name__ == "__main__":
