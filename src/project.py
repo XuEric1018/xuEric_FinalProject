@@ -14,12 +14,29 @@ class TurnMosaic:
         except FileNotFoundError:
             print(f"Error: Image '{self.image_name}' not found.")
             return False
+        
+    def create_mosaic(self):
+        width, heigth = self.image.size
+        for y in range(0, heigth, self.mosaic_size):
+            for x in range(0, width, self.mosaic_size):
+                #Create the region to blur
+                box = (x, y, x + self.mosaic_size, y + self.mosaic_size)
 
+                box_region = self.image.crop(box)
+
+                blurred_region = box_region.filter(ImageFilter.BLUR)
+
+                self.image.paste(blurred_region, box)
+    
+    def save_mosaic(self, output_name):
+        self.image.save(output_name)
 
 
 def main():
     image_name = "LakeView.png"
     mosaic_size = 50  
+
+    
 
 if __name__ == "__main__":
     main()
