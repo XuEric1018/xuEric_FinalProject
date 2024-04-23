@@ -16,6 +16,11 @@ class TurnMosaic:
             return False
         
     def create_mosaic(self):
+        #Solves: AttributeError: 'TurnMosaic' object has no attribute 'image'
+        if not hasattr(self, 'image'):
+            if not self.load_image():
+                return
+
         width, heigth = self.image.size
         for y in range(0, heigth, self.mosaic_size):
             for x in range(0, width, self.mosaic_size):
@@ -29,7 +34,10 @@ class TurnMosaic:
                 self.image.paste(blurred_region, box)
     
     def save_mosaic(self, output_name):
-        self.image.save(output_name)
+        if hasattr(self, 'image'):
+            self.image.save(output_name)
+        else:
+            print("Error: No image to save.")
 
 
 def main():
