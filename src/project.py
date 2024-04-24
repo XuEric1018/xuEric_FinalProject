@@ -51,7 +51,8 @@ class TurnMosaic:
     
     def save_mosaic(self, output_name):
         if hasattr(self, 'image'):
-            self.image.save(output_name)
+            #convert image format to JPEG
+            self.image.save(output_name, 'JPEG', quality = 95)
         else:
             print("Error: No image to save.")
 
@@ -65,7 +66,7 @@ def main():
     mosaic = TurnMosaic(image_name, mosaic_size)
     mosaic.create_mosaic()
 
-    mosaic.save_mosaic("Mosaiced_LakeView.png")
+    mosaic.save_mosaic("Mosaiced_LakeView.PNG")
 
     
 
