@@ -1,7 +1,7 @@
 # TURN MOSAIC
 
 ## Demo
-Demo Video: <URL>
+Demo Video: <https://youtu.be/Vl3G_mkYdlg> 
 
 ## GitHub Repository
 GitHub Repo:[<(https://github.com/XuEric1018/xuEric_FinalProject.git)>](https://github.com/XuEric1018/xuEric_FinalProject.git)
