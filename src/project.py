@@ -11,12 +11,17 @@ class TurnMosaic:
     def load_image(self):
         try:
             self.image = Image.open(self.image_name)
+            #Resize the image
+            self.resize_image()
             return True
         except FileNotFoundError:
             print(f"Error: Image '{self.image_name}' not found.")
             return False
         
-
+    def resize_image(self):
+        new_size = (self.image.width // 2, self.image.height // 2)
+        self.image = self.image.resize(new_size, Image.LANCZOS)
+        
     def create_mosaic(self):
         #Solves: AttributeError: 'TurnMosaic' object has no attribute 'image'
         if not hasattr(self, 'image'):
