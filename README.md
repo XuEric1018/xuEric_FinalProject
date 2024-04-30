@@ -19,4 +19,3 @@ The project is designed to be simple and clear. Each function within the TurnMos
 
 ## Future Improvements
 Add a way so that any image can be input by a user instead of only restricting it to one image.
-
